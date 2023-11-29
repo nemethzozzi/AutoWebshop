@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    -webkit-transition: opacity 0.8s ease-in-out;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
+
+  .model-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .slider-container {
+    margin-top: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #rotation-slider {
+    width: 40%; 
+    height: 12px; 
+    appearance: none;
+    background: #d3d3d3; 
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    border-radius: 10px; 
+  }
+  
+  #rotation-slider:hover {
+    opacity: 1;
+  }
+  
+  #rotation-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px; 
+    height: 20px; 
+    background: #0369a1;
+    border-radius: 50%; 
+    cursor: pointer;
+  }
+  
+  #rotation-slider::-moz-range-thumb {
+    width: 20px; 
+    height: 20px; 
+    background: #075985; 
+    border-radius: 50%; 
+    cursor: pointer;
+  }

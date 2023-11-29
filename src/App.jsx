@@ -6,6 +6,7 @@ import Cars from './Components/Cars';
 import Contact from './Components/Contact';
 import Landing from './Components/Landing';
 import About from './Components/About';
+import Model from './Components/Model';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div>
       <Landing />
       <About />
+      <Model />
       <Cars />
       <Contact />
       </div>
