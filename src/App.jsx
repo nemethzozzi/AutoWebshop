@@ -9,17 +9,13 @@ import About from './Components/About';
 
 function App() {
   return (
-    <div style={{backgroundColor: "#e5e7eb"}}>
+    <div  style={{ backgroundSize: 'cover', backgroundImage: `url('pictures/background1.jpg')` }}>
       <Header />
       <div>
-      <div>
       <Landing />
-      </div>
-      <div style={{ backgroundSize: 'cover', backgroundImage: `url('pictures/background1.jpg')` }}>
       <About />
       <Cars />
       <Contact />
-      </div>
       </div>
       <div>
         <Footer />

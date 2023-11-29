@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const Items = ({ items }) => {
+  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -16,13 +19,30 @@ const Items = ({ items }) => {
     arrows: false,
   };
 
+  // Calculate the start and end index of items for the current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  // Get the items to be displayed on the current page
+  const displayedItems = items.slice(startIndex, endIndex);
+
   return (
     <div id="Product" className="py-16">
       <div className="container mx-auto mt-8">
-        <h2 className="text-8xl font-bold mb-36 mt-28 text-center text-black">Available Cars</h2>
-
+        <h2 className="text-8xl font-extrabold mb-36 mt-28 text-center text-black">Available Cars</h2>
+        <div className="flex justify-center mt-8">
+          {Array.from({ length: Math.ceil(items.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              className={`mx-2 px-4 py-2 rounded-md ${page === currentPage ? 'bg-sky-700 text-white' : 'hover:bg-sky-700 hover:text-white'}`}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
         <div className="grid grid-cols-1 mt-8 mb-8 gap-36">
-          {items.map((item, index) => (
+          {displayedItems.map((item, index) => (
             <div
               key={item.id}
               className={`bg-white bg-opacity-30 backdrop-filter backdrop-blur-md p-8 rounded-md shadow-md md:flex ${
@@ -51,6 +71,9 @@ const Items = ({ items }) => {
                   <h3 className="text-sm text-gray-600 mb-2"> ({item.year})</h3>
                 </div>
                 <div className="flex items-center mb-2">
+                <p className="text-gray-600 font-bold">{item.fuel}</p>
+                </div>
+                <div className="flex items-center mb-2">
                   <img src="icons/fuel.png" alt="Fuel Icon" className="w-5 h-5 mr-2" />
                   <p className="text-gray-600 font-bold">{item.fuel_consumption}</p>
                 </div>
@@ -63,6 +86,19 @@ const Items = ({ items }) => {
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className="flex justify-center mt-8">
+          {Array.from({ length: Math.ceil(items.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              className={`mx-2 px-4 py-2 rounded-md ${page === currentPage ? 'bg-sky-700 text-white' : 'hover:bg-sky-700 hover:text-white'}`}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </button>
           ))}
         </div>
       </div>

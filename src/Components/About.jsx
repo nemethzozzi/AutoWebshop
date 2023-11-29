@@ -9,7 +9,7 @@ const MercedesModel = () => {
   useFrame(() => {
     // Rotate the model
     if (mercedesRef.current) {
-      mercedesRef.current.rotation.y += 0.01;
+      mercedesRef.current.rotation.y += 0.002;
     }
   });
 
@@ -27,7 +27,7 @@ const MercedesModel = () => {
 const About = () => {
   return (
     <div id="About" className="container mx-auto mt-10 text-black">
-      <h2 className="text-8xl font-bold mb-8 text-center h-">About Us</h2>
+      <h2 className="text-8xl font-extrabold mb-8 text-center h-">About Us</h2>
 
       <p className="text-lg mb-6 leading-relaxed">
         Welcome to AutoWebshop, your ultimate destination for all things automotive! We're not just passionate about cars; we're obsessed. Our mission is to redefine your online car shopping experience, whether you're a seasoned enthusiast or an everyday driver.
@@ -35,8 +35,7 @@ const About = () => {
 
       <div className="h-screen">
         <Canvas>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[0, 5, 5]} intensity={0.5} />
+          <pointLight position={[0, 5, 5]} intensity={150} />
           <Suspense fallback={null}>
             <MercedesModel />
           </Suspense>
