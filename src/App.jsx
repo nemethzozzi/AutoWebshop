@@ -15,7 +15,7 @@ function App() {
       <div>
       <Landing />
       </div>
-      <div style={{ backgroundSize: 'cover', backgroundImage: `url('background1.jpg')` }}>
+      <div style={{ backgroundSize: 'cover', backgroundImage: `url('pictures/background1.jpg')` }}>
       <About />
       <Cars />
       <Contact />

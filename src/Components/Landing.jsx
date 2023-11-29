@@ -4,7 +4,7 @@ const Landing = () => {
   return (
     <div id="Landing">
        <div className="relative h-screen">
-      <div className="absolute inset-0 bg-cover bg-center opacity-70" style={{ backgroundImage: `url('background.jpg')` }}></div>
+      <div className="absolute inset-0 bg-cover bg-center opacity-70" style={{ backgroundImage: `url('pictures/background.jpg')` }}></div>
       <div className="relative z-10 flex items-center justify-center text-black text-center">
         <div>
         <h1 className="text-8xl mb-4 mt-14 font-bold" style={{ fontFamily: 'Roboto' }}>Carshop</h1>

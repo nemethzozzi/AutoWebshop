@@ -3,7 +3,7 @@ import { Canvas, useLoader, useFrame } from 'react-three-fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 
 const MercedesModel = () => {
-  const gltf = useLoader(GLTFLoader, '/mercedes.gltf');
+  const gltf = useLoader(GLTFLoader, 'models/mercedes.gltf');
   const mercedesRef = useRef();
 
   useFrame(() => {
