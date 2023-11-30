@@ -9,7 +9,7 @@ const AnimatedContainer = ({ children }) => {
   return (
     <div
       ref={ref}
-      className={`fade-in w-full bg-white bg-opacity-30 backdrop-filter backdrop-blur-md container mx-auto px-4 flex flex-col md:flex-row items-center justify-center rounded-md ${inView ? 'visible' : ''}`}
+      className={`fade-in w-full bg-white bg-opacity-30 backdrop-filter backdrop-blur-md container mx-auto px-4 flex flex-col items-center justify-center rounded-md ${inView ? 'visible' : ''}`}
     >
       {children}
     </div>
@@ -18,13 +18,12 @@ const AnimatedContainer = ({ children }) => {
 
 const Contact = () => {
   return (
-    <div id="Contact" className="py-16 ">
+    <div id="Contact" className="py-16">
       <AnimatedContainer>
-          <h2 className="text-8xl font-extrabold text-black mb-8 mx-auto mt-8">Contact Us</h2>
-      </AnimatedContainer>
-
-      <AnimatedContainer>
-          <div className="w-full md:w-1/2 pr-8 mb-8 md:mb-0 text-left">
+        <h2 className="text-8xl font-extrabold text-black mb-8 mx-auto mt-8">Contact Us</h2>
+        <div className="flex flex-col md:flex-row items-center justify-center md:w-5/6"> 
+          {/* Left Side: Our Location, Email, Phone */}
+          <div className="md:w-1/2 pr-8 mb-8 md:mb-0 text-left">
             {/* Our Location */}
             <div className="flex items-center mb-8 ml-14">
               <img
@@ -65,7 +64,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 pl-8 mr-10">
+          {/* Right Side: Send us an Email */}
+          <div className="w-full md:w-1/2 pl-8">
             <div className="p-6 rounded-lg">
               <h3 className="text-3xl font-bold text-black mb-4">Send us an Email</h3>
               <form>
@@ -98,6 +98,7 @@ const Contact = () => {
               </form>
             </div>
           </div>
+        </div>
       </AnimatedContainer>
     </div>
   );
