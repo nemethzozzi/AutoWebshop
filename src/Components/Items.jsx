@@ -23,6 +23,7 @@ const AnimatedContainer = ({ children }) => {
 const Items = ({ items }) => {
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
+  const [favorites, setFavorites] = useState([]);
 
   const sliderSettings = {
     dots: true,
@@ -42,6 +43,23 @@ const Items = ({ items }) => {
 
   // Get the items to be displayed on the current page
   const displayedItems = items.slice(startIndex, endIndex);
+
+  const addToFavorites = (itemId) => {
+    const itemToAdd = items.find((item) => item.id === itemId);
+    if (itemToAdd) {
+      if (favorites.some((fav) => fav.id === itemId)) {
+        // If item is already in favorites, remove it
+        setFavorites(favorites.filter((fav) => fav.id !== itemId));
+      } else {
+        // If item is not in favorites, add it
+        setFavorites([...favorites, itemToAdd]);
+      }
+    }
+  };
+
+  const isFavorite = (itemId) => {
+    return favorites.some((fav) => fav.id === itemId);
+  };
 
   return (
     <div id="Product" className="py-16">
@@ -81,25 +99,58 @@ const Items = ({ items }) => {
                   ) : (
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                   )}
+                  <div className="flex items-center justify-center mt-10 mb-6">
+                    <button className="bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800">
+                      Add to Cart
+                    </button>
+                    <button
+                      onClick={() => addToFavorites(item.id)}
+                      className={`bg-sky-700 px-4 py-2 rounded-md hover:bg-sky-800 ml-4 cursor-pointer ${
+                        isFavorite(item.id) ? 'text-red-500' : 'text-gray-300'
+                      }`}
+                    >
+                      {isFavorite(item.id) ? '❤️' : '🤍'}
+                    </button>
+                  </div>
+                  <p className="text-2xl text-black font-bold text-center ">${item.price}</p>
+
+
                 </div>
                 <div className="md:w-1/2 md:ml-4">
                   <div className="flex">
                     <h3 className="text-xl font-bold mb-2 text-black">{item.name}</h3>
                     <h3 className="text-sm text-gray-600 mb-2"> ({item.year})</h3>
                   </div>
-                  <div className="flex items-center mb-2">
-                    <p className="text-gray-600 font-bold">{item.fuel}</p>
-                  </div>
-                  <div className="flex items-center mb-2">
-                    <img src="icons/fuel.png" alt="Fuel Icon" className="w-5 h-5 mr-2" />
-                    <p className="text-gray-600 font-bold">{item.fuel_consumption}</p>
-                  </div>
-                  <p className="text-gray-600 mb-2">{item.description}</p>
-                  <p className="text-blue-500 font-semibold">${item.price}</p>
-                  <div className="flex items-center justify-center mt-36">
-                    <button className="ml-4 bg-sky-700 text-white px-4 py-2 rounded-md hover:bg-sky-800">
-                      Add to Cart
-                    </button>
+                  <p className="text-gray-600 mb-2 w-5/6 text-justify" >{item.description}</p>
+                  <div className="flex flex-wrap mt-6">
+                    <div className="md:w-1/2 pr-8 mb-8 md:mb-0 text-left">
+                      <div>
+                        <h2 className="text-2xl font-bold text-black mb-1">{item.fuel}</h2>
+                        <p className="text-lg text-gray-600">Fuel</p>
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-bold text-black mb-1">{item.fuel_consumption}</h2>
+                        <p className="text-lg text-gray-600">Fuel Consuption</p>
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-bold text-black mb-1">{item.power}</h2>
+                        <p className="text-lg text-gray-600">Power</p>
+                      </div>
+                    </div>
+                    <div className="md:w-1/2 pl-8">
+                      <div>
+                        <h2 className="text-2xl font-bold text-black mb-1">{item.switch}</h2>
+                        <p className="text-lg text-gray-600">Switch</p>
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-bold text-black mb-1">{item.doors}</h2>
+                        <p className="text-lg text-gray-600">Doors</p>
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-bold text-black mb-1">{item.fuel}</h2>
+                        <p className="text-lg text-gray-600">Fuel</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
