@@ -1,28 +1,22 @@
+// App.jsx
 import React from 'react';
 import './styles.css';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Cars from './Components/Cars';
-import Contact from './Components/Contact';
-import Landing from './Components/Landing';
-import About from './Components/About';
-import Model from './Components/Model';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import NoPage from './Pages/NoPage';
 
 function App() {
   return (
-    <div  style={{ backgroundSize: 'cover', backgroundImage: `url('pictures/background1.jpg')` }}>
-      <Header />
-      <div>
-      <Landing />
-      <About />
-      <Model />
-      <Cars />
-      <Contact />
-      </div>
-      <div>
-        <Footer />
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </Router>
   );
 }
 

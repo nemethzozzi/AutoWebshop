@@ -116,7 +116,7 @@ const Items = ({ items }) => {
 
 
                 </div>
-                <div className="md:w-1/2 md:ml-4">
+                <div className="md:w-1/2 md:ml-4 ">
                   <div className="flex">
                     <h3 className="text-xl font-bold mb-2 text-black">{item.name}</h3>
                     <h3 className="text-sm text-gray-600 mb-2"> ({item.year})</h3>

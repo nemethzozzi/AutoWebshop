@@ -36,7 +36,10 @@ const Model = () => {
   useEffect(() => {
     // Update the manual rotation value continuously
     const interval = setInterval(() => {
-      setManualRotationY((prevRotation) => prevRotation + 0.002);
+      setManualRotationY((prevRotation) => {
+        // Reset rotation to 0 when it reaches the maximum value
+        return prevRotation >= 6.28 ? 0 : prevRotation + 0.002;
+      });
     }, 16); // Adjust the interval as needed
 
     // Clear the interval when the component is unmounted
