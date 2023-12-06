@@ -8,14 +8,13 @@ const GoBackHeader = () => {
   return (
     <nav className="p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-4xl font-bold">
           <img
             src="./icons/goback.png"
             alt="Go Back"
             onClick={goBack}
             style={{ cursor: 'pointer' }}
+            className="icon-rotate rounded-full bg-white"
           />
-        </div>
       </div>
     </nav>
   );

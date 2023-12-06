@@ -58,3 +58,20 @@
     border-radius: 50%; 
     cursor: pointer;
   }
+
+  .icon-rotate {
+    animation: rotate 1s linear infinite;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -24,6 +24,7 @@ const Items = ({ items }) => {
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const [favorites, setFavorites] = useState([]);
+  const availableCarsRef = useRef(null);
 
   const sliderSettings = {
     dots: true,
@@ -64,18 +65,10 @@ const Items = ({ items }) => {
   return (
     <div id="Product" className="py-16">
       <div className="container mx-auto mt-8">
-        <h2 className="text-8xl font-extrabold mb-36 mt-28 text-center text-black">Available Cars</h2>
-        <div className="flex justify-center mt-8">
-          {Array.from({ length: Math.ceil(items.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              className={`mx-2 px-4 py-2 rounded-md ${page === currentPage ? 'bg-sky-700 text-white' : 'hover:bg-sky-700 hover:text-white'}`}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+        <h2 ref={availableCarsRef} className="text-8xl font-extrabold mb-36 mt-28 text-center text-black">
+          Available Cars
+        </h2>
+        <div className="flex justify-center mt-8"></div>
         <div className="grid grid-cols-1 mt-8 mb-8 gap-36">
           {displayedItems.map((item, index) => (
             <AnimatedContainer key={item.id}>
@@ -113,15 +106,13 @@ const Items = ({ items }) => {
                     </button>
                   </div>
                   <p className="text-2xl text-black font-bold text-center ">${item.price}</p>
-
-
                 </div>
                 <div className="md:w-1/2 md:ml-4 ">
                   <div className="flex">
                     <h3 className="text-xl font-bold mb-2 text-black">{item.name}</h3>
                     <h3 className="text-sm text-gray-600 mb-2"> ({item.year})</h3>
                   </div>
-                  <p className="text-gray-600 mb-2 w-5/6 text-justify" >{item.description}</p>
+                  <p className="text-gray-600 mb-2 w-5/6 text-justify">{item.description}</p>
                   <div className="flex flex-wrap mt-6">
                     <div className="md:w-1/2 pr-8 mb-8 md:mb-0 text-left">
                       <div>
@@ -130,7 +121,7 @@ const Items = ({ items }) => {
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold text-black mb-1">{item.fuel_consumption}</h2>
-                        <p className="text-lg text-gray-600">Fuel Consuption</p>
+                        <p className="text-lg text-gray-600">Fuel Consumption</p>
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold text-black mb-1">{item.power}</h2>
@@ -163,8 +154,14 @@ const Items = ({ items }) => {
           {Array.from({ length: Math.ceil(items.length / itemsPerPage) }, (_, i) => i + 1).map((page) => (
             <button
               key={page}
-              className={`mx-2 px-4 py-2 rounded-md ${page === currentPage ? 'bg-sky-700 text-white' : 'hover:bg-sky-700 hover:text-white'}`}
-              onClick={() => setCurrentPage(page)}
+              className={`mx-2 px-4 py-2 rounded-md ${
+                page === currentPage ? 'bg-sky-700 text-white' : 'hover:bg-sky-700 hover:text-white'
+              }`}
+              onClick={() => {
+                setCurrentPage(page);
+                // Scroll to the "Available Cars" section when clicking on the next page button
+                availableCarsRef.current.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               {page}
             </button>
