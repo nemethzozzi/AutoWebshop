@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Register = () => {
   return (
     <section className="h-screen flex flex-col md:flex-row justify-center items-center my-2 mx-5 md:mx-0 md:my-0">
-      <div className="md:w-2/3 max-w-lg bg-white bg-opacity-30 backdrop-filter backdrop-blur-md p-12 rounded-md shadow-md text-center">
+      <div className="md:w-2/3 max-w-lg bg-white bg-opacity-20 backdrop-filter backdrop-blur-md p-12 rounded-md shadow-md text-center">
         <p className="text-5xl mb-7 font-bold">Sign Up</p>
         <div className="relative mb-5">
           <img src="./icons/emailsign.png" alt="Email Icon" className="w-5 absolute left-3 top-1/2 transform -translate-y-1/2" />

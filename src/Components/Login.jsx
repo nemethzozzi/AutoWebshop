@@ -6,12 +6,12 @@ const Login = () => {
 return (
   
     <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
-      <div className="md:w-1/3 max-w-sm bg-white bg-opacity-30 backdrop-filter backdrop-blur-md p-8 rounded-md shadow-md text-center">
+      <div className="md:w-2/3 max-w-lg bg-white bg-opacity-20 backdrop-filter backdrop-blur-md p-12 rounded-md shadow-md text-center">
         <div className="text-center md:text-left">
           <label className="mr-1">Sign in with</label>
           <button
             type="button"
-            className="mx-1 h-9 w-9 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_9px_-4px_#3b71ca]">
+            className="mx-1 h-9 w-9 rounded-full bg-blue-600 hover:bg-blue-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mx-auto h-3.5 w-3.5"
@@ -23,7 +23,7 @@ return (
           </button>
           <button
             type="button"
-            className="inlne-block mx-1 h-9 w-9 rounded-full bg-stone-900 hover:bg-black uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca]">
+            className="inlne-block mx-1 h-9 w-9 rounded-full bg-stone-900 hover:bg-black">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mx-auto h-3.5 w-3.5"
@@ -35,7 +35,7 @@ return (
           </button>
           <button
             type="button"
-            className="inlne-block mx-1 h-9 w-9 rounded-full bg-white hover:bg-gray-100 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca]">
+            className="inlne-block mx-1 h-9 w-9 rounded-full bg-white hover:bg-gray-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mx-auto h-3.5 w-3.5"
@@ -73,7 +73,7 @@ return (
             <input className="mr-1" type="checkbox" />
             <span>Remember Me</span>
           </label>
-          <a className="text-sky-600 hover:text-sky-700 hover:underline hover:underline-offset-4" href="#">Forgot Password?</a>
+          <a className="text-sky-400 hover:underline hover:underline-offset-4" href="#">Forgot Password?</a>
         </div>
         <div className="mt-4">
           <button className="bg-sky-600 hover:bg-sky-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">
@@ -81,7 +81,7 @@ return (
           </button>
         </div>
         <div className="mt-4 font-semibold text-sm text-black text-center md:text-left">
-          Don't have an account? <a className="text-red-600 hover:underline hover:underline-offset-4">
+          Don't have an account? <a className="text-sky-400 hover:underline hover:underline-offset-4">
           <Link to="/register">Register</Link>
           </a>
         </div>
