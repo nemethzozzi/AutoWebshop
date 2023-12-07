@@ -23,27 +23,27 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-sky-800 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center relative">
+    <nav className="bg-sky-800 text-white p-4 w-full flex justify-between items-center relative">
         {/* AutoWebshop text aligned to the left */}
         <div className="text-3xl font-bold">
           <button onClick={() => scrollToSection('Landing')}>AutoWebshop</button>
         </div>
 
-        {/* Other buttons centered for desktop */}
-        <div className={`hidden lg:flex items-center space-x-4 flex-grow justify-center ${isMobileMenuOpen ? 'hidden' : ''}`}>
+        {/* Centered buttons for desktop */}
+        <div className={`hidden lg:flex items-center space-x-4 flex-grow-2 justify-center ${isMobileMenuOpen ? 'hidden' : ''}`}>
           <button onClick={() => scrollToSection('About')} className="hover:text-gray-300">About</button>
           <button onClick={() => scrollToSection('Product')} className="hover:text-gray-300">Products</button>
           <button onClick={() => scrollToSection('Contact')} className="hover:text-gray-300">Contact</button>
           <button className="hover:text-gray-300">Favourites</button>
         </div>
 
-        <div className={`hidden lg:flex items-center space-x-4 flex-grow justify-center ml-auto ${isMobileMenuOpen ? 'hidden' : ''}`}>
+        {/* Right-aligned buttons for desktop */}
+        <div className={`hidden lg:flex items-center space-x-2 flex-grow-1 justify-end ${isMobileMenuOpen ? 'hidden' : ''}`}>
           <button className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md rounded-lg p-2 my-2" onTouchEnd={() => { /* Handle Login click in mobile */ }}>
-            <Link to="/login" className="hover:text-gray-300">Login</Link>
+            <Link to="/login" className="hover:text-gray-300 text-sm">Login</Link>
           </button>
           <button className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-md rounded-lg p-2 my-2" onTouchEnd={() => { /* Handle Register click in mobile */ }}>
-            <Link to="/register" className="hover:text-gray-300">Sign Up</Link>
+            <Link to="/register" className="hover:text-gray-300 text-sm">Sign Up</Link>
           </button>
         </div>
 
@@ -88,7 +88,6 @@ const Header = () => {
             </button>
           </div>
         </animated.div>
-      </div>
     </nav>
   );
 };
