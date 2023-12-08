@@ -1,6 +1,7 @@
 import React from 'react';
 import Register from '../Components/Register';
 import GoBackHeader from '../Components/GoBackHeader';
+import Loader from '../Components/Loader';
 
 const RegisterPage = () => {
     
@@ -12,10 +13,12 @@ const RegisterPage = () => {
   };
 
   return (
+    <Loader>
     <div className="h-screen flex flex-col" style={pageStyle}>
       <GoBackHeader />
       <Register />
     </div>
+    </Loader>
   );
 }
 

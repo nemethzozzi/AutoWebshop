@@ -6,9 +6,12 @@ import Cars from '../Components/Cars';
 import Contact from '../Components/Contact';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import Loader from '../Components/Loader';
+
 
 const Home = () => {
   return (
+    <Loader>
     <div style={{ backgroundSize: 'cover', backgroundImage: `url('pictures/background1.jpg')` }}>
       <div>
         <Header />
@@ -20,7 +23,7 @@ const Home = () => {
         <Footer />
       </div>
     </div>
-
+    </Loader>
   );
 };
 

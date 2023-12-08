@@ -3,7 +3,7 @@ import { Canvas, useLoader, useFrame } from 'react-three-fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import { useInView } from 'react-intersection-observer';
 
-const MercedesModel = ({ inView, manualRotationY }) => {
+const MercedesModel = ({ inView, manualRotationY, scale }) => {
   const gltf = useLoader(GLTFLoader, 'models/mercedes.gltf');
   const mercedesRef = useRef();
 
@@ -17,7 +17,7 @@ const MercedesModel = ({ inView, manualRotationY }) => {
   return (
     <primitive
       object={gltf.scene}
-      scale={inView ? [0.4, 0.4, 0.4] : [0, 0, 0]} // Set scale to 0 if not in view
+      scale={[scale, scale, scale]} // Set scale based on the prop
       position={[0, -1.5, 0]}
       rotation={[0, Math.PI / 2, 0]}
       ref={mercedesRef}
@@ -32,8 +32,26 @@ const Model = () => {
   });
 
   const [manualRotationY, setManualRotationY] = useState(0);
+  const [scale, setScale] = useState(0.4); // Initial scale
 
   useEffect(() => {
+    // Update the scale based on the window width
+    const updateScale = () => {
+      if (window.innerWidth < 768) {
+        setScale(0.3); // Adjust the scale for phone view
+      } else if (window.innerWidth < 1024) {
+        setScale(0.3); // Adjust the scale for tablet view
+      } else {
+        setScale(0.4); // Default scale for larger screens
+      }
+    };
+
+    // Initial scale update
+    updateScale();
+
+    // Update the scale when the window is resized
+    window.addEventListener('resize', updateScale);
+
     // Update the manual rotation value continuously
     const interval = setInterval(() => {
       setManualRotationY((prevRotation) => {
@@ -42,8 +60,11 @@ const Model = () => {
       });
     }, 16); // Adjust the interval as needed
 
-    // Clear the interval when the component is unmounted
-    return () => clearInterval(interval);
+    // Clear the interval and remove the resize event listener when the component is unmounted
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', updateScale);
+    };
   }, []);
 
   const handleSliderChange = (event) => {
@@ -60,7 +81,7 @@ const Model = () => {
       <Canvas>
         <pointLight position={[0, 5, 5]} intensity={150} />
         <Suspense fallback={null}>
-          <MercedesModel inView={inView} manualRotationY={manualRotationY} />
+          <MercedesModel inView={inView} manualRotationY={manualRotationY} scale={scale} />
         </Suspense>
       </Canvas>
       <div className="slider-container">
